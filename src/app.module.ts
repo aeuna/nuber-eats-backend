@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { Restaurant } from './restaurants/entities/restaurant.entity';
 
 @Module({
   imports: [
@@ -28,8 +29,9 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
       port: +process.env.DB_PORT,
       username: process.env.DB_USERNAME,
       database: process.env.DB_NAME,
-      synchronize: true, //데이터베이스를 모듈의 현재상태로 마이그레이션하겠다.
-      logging: true, //데이터베이스에서 무슨일이 일어나는지 콘솔에 표시
+      synchronize: process.env.NODE_ENV !== 'prod', //데이터베이스를 모듈의 현재상태로 마이그레이션하겠다.
+      logging: true, //데이터베이스에서 무슨일이 일어나는지 콘솔에 표시,
+      entities: [Restaurant],
     }),
     RestaurantsModule,
   ],
