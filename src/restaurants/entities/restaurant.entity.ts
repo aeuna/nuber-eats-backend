@@ -3,12 +3,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@ObjectType() //graphql로부터 받아온 ObjectType
-@Entity()
+@ObjectType() //graphql로부터 받아온 ObjectType, for graphql
+@Entity() //for typeOrm
 export class Restaurant {
   @PrimaryGeneratedColumn()
+  @Field((type) => Number)
   id: number;
-
   @Field((type) => String)
   @Column()
   name: string;
