@@ -46,7 +46,7 @@ export class UsersService {
         return { ok: false, error: 'Wrong password' };
       }
       const token = jwt.sign({ id: user.id }, this.config.get('SECRET_KEY'));
-      return { ok: true, token: 'test check token' };
+      return { ok: true, token };
     } catch (error) {
       return { ok: false, error };
     }
