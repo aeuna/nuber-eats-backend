@@ -21,6 +21,7 @@ import { User } from './users/entities/user.entity';
         DB_PORT: Joi.string().required(),
         DB_USERNAME: Joi.string().required(),
         DB_NAME: Joi.string().required(),
+        SECRET_KEY: Joi.string().required(),
       }),
     }),
     GraphQLModule.forRoot({
