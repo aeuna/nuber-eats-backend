@@ -14,6 +14,7 @@ export class UsersResolver {
   hi() {
     return true;
   }
+
   @Mutation((returns) => CreateAccountOutput)
   async createAccount(
     @Args('input') createAccountInput: CreateAccountInput,
@@ -24,6 +25,7 @@ export class UsersResolver {
       return { ok: false, error };
     }
   }
+
   @Mutation((returns) => LoginOutput)
   async login(@Args('input') loginInput: LoginInput): Promise<LoginOutput> {
     try {
@@ -32,4 +34,7 @@ export class UsersResolver {
       return { ok: false, error };
     }
   }
+
+  @Query((returns) => User)
+  me() {}
 }
