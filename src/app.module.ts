@@ -15,6 +15,7 @@ import { CommonModule } from './common/common.module';
 import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -45,11 +46,10 @@ import { JwtMiddleware } from './jwt/jwt.middleware';
       logging: process.env.NODE_ENV !== 'prod', //데이터베이스에서 무슨일이 일어나는지 콘솔에 표시,
       entities: [User],
     }),
-    UsersModule,
-    CommonModule,
     JwtModule.forRoot({
       privateKey: process.env.PRIVATE_KEY,
     }),
+    UsersModule,
   ],
   controllers: [],
   providers: [],
