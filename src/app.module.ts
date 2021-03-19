@@ -14,6 +14,7 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
+import { Verfication } from './users/entities/verification.entity';
 
 @Module({
   imports: [
@@ -42,7 +43,7 @@ import { JwtMiddleware } from './jwt/jwt.middleware';
       database: process.env.DB_NAME,
       synchronize: process.env.NODE_ENV !== 'prod', //데이터베이스를 모듈의 현재상태로 마이그레이션하겠다.
       logging: process.env.NODE_ENV !== 'prod', //데이터베이스에서 무슨일이 일어나는지 콘솔에 표시,
-      entities: [User],
+      entities: [User, Verfication],
     }),
     JwtModule.forRoot({
       privateKey: process.env.PRIVATE_KEY,
